@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 
- <link rel="stylesheet" href="/css/normalize.css">
- <link rel="stylesheet" href="/css/application.css">
+ <link rel="stylesheet" href="css/normalize.css">
+ <link rel="stylesheet" href="css/application.css">
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
- <script type="text/javascript" src="/js/application.js"></script>
+ <script type="text/javascript" src="js/application.js"></script>
  <title>Connect 4</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
 <table class="connect-table" style="width:90%">
 
   <tr class="row5">
-    <td class='column0' id="05">0,5</td>
+    <td class='column0' id="05">0,0</td>
     <td class='column1' id="15">1,5</td>
     <td class='column2' id="25">2,5</td>
     <td class='column3' id="35">3,5</td>
@@ -52,7 +52,6 @@
     <td class='column5' id="52">5,2</td>
     <td class='column6' id="62">6,2</td>
   </tr>
-  <tr class="row1">
     <td class='column0' id="01">0,1</td>
     <td class='column1' id="11">1,1</td>
     <td class='column2' id="21">2,1</td>
@@ -62,7 +61,7 @@
     <td class='column6' id="61">6,1</td>
   </tr>
   <tr class="row0">
-    <td class='column0' id="00">0,0</td>
+  	<td class='column0' id="00">0,0</td>
     <td class='column1' id="10">1,0</td>
     <td class='column2' id="20">2,0</td>
     <td class='column3' id="30">3,0</td>
@@ -70,6 +69,16 @@
     <td class='column5' id="50">5,0</td>
     <td class='column6' id="60">6,0</td>
   </tr>
+  <tr class="buttons">
+    <td><button type="button" id="button-1">Play Column 1</button></td>
+    <td><button type="button" id="button-2">Play Column 2</button></td>
+    <td><button type="button" id="button-3">Play Column 3</button></td>
+    <td><button type="button" id="button-4">Play Column 4</button></td>
+    <td><button type="button" id="button-5">Play Column 5</button></td>
+    <td><button type="button" id="button-6">Play Column 6</button></td>
+    <td><button type="button" id="button-7">Play Column 7</button></td>
+  </tr>
+
 </table>
 
 
