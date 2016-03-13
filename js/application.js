@@ -104,17 +104,3 @@ var win_check = function() {
 
 check_win(win_array);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
