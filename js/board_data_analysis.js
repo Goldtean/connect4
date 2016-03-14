@@ -1,6 +1,6 @@
 // Column Arrays
 
-var columns =[['b', 'r', 'b', 'b'],['r', 'b', 'b', 'r', 'b'],['b', 'r', 'b', 'r', 'b'],['r', 'b', 'r', 'r', 'b'],[],['r', 'r', 'b']]
+var columns =[['r', 'b'], ['r', 'r', 'b', 'r', 'b'], ['b', 'r', 'b', 'b', 'r', 'r'], ['r', 'r', 'r', 'b', 'b', 'r'], ['r', 'b', 'r', 'b', 'b', 'r'], ['b', 'b', 'b', 'r', 'b'], []]
 // var column0 = [];
 // var column1 = [];
 // var column2 = [];
@@ -14,21 +14,11 @@ var columns =[['b', 'r', 'b', 'b'],['r', 'b', 'b', 'r', 'b'],['b', 'r', 'b', 'r'
 var rows = new Array(6);
 
 
-// [
-// [0, 0, 0, 0, 0, 0, 0],
-// [0, 0, 0, 0, 0, 0, 0],
-// [0, 0, 0, 0, 0, 0, 0],
-// [0, 0, 0, 0, 0, 0, 0],
-// [0, 0, 0, 0, 0, 0, 0],
-// [0, 0, 0, 0, 0, 0, 0],
-// ]
-
-
-// Fill rows from columns
 for (var i = 0; i < 6; i++) {
   rows[i] = new Array(7);
 };
 
+// Fill rows from columns
 var fillRowsFromCol = function(columns){
 	for (var i = 0; i < columns.length; i++){
 		for (var x = 0; x < columns[i].length; x++){
@@ -36,21 +26,6 @@ var fillRowsFromCol = function(columns){
 		};
 	};
 };
-
-
-
-	// var rowIndexOffset = 1
-	// for (var i = 0; i < column.length; i++){
-	// 	var rowIndex = rows.length - rowIndexOffset;
-	// 	rows[rowIndex][0] = column[i];
-	// 	rowIndexOffset += 1;
-	// };
-
-
-
-
-
-
 
 
 // 'Left Handed' Diagonal Arrays
@@ -98,12 +73,6 @@ var fillLeftDiagonals = function(){
 	leftHandDiagonals[3][5] = rows[5][6];
 };
 
-// var lDiag0 = new Array(4)
-// var lDiag1 = new Array(5)
-// var lDiag2 = new Array(6)
-// var lDiag3 = new Array(6)
-// var lDiag4 = new Array(5)
-// var lDiag5 = new Array(4)
 
 // 'Right Handed' Diagonal Arrays
 
@@ -151,21 +120,14 @@ var fillRightDiagonals = function(){
 };
 
 
-// var rDiag0 = new Array(4)
-// var rDiag1 = new Array(5)
-// var rDiag2 = new Array(6)
-// var rDiag3 = new Array(6)
-// var rDiag4 = new Array(5)
-// var rDiag5 = new Array(4)
 
-
-// THE MONSTER
+// THE MONSTER - data structure that gets checked for 4 in a row
 var monster = []
 
-
+// Update monster - gets called every turn
 var updateMonster = function(){
 
-	// Populate full structure from columns
+	// Populate input structures from columns
 	fillRowsFromCol(columns);
 	fillRightDiagonals();
 	fillLeftDiagonals();
@@ -186,13 +148,57 @@ var updateMonster = function(){
 	};
 
 
-	// //fill monster with left right 
+	//fill monster with left right 
 	for (var i = 0; i < leftHandDiagonals.length; i++){
 		monster.push(leftHandDiagonals[i]);
 	};
 
-	console.log(monster);
+	console.log(monster)
+
+};
+
+//display winner as alert
+var winnerAlert = function(){
+	if (red_count == 4) {
+		console.log("red win");
+	}
+	else if (black_count == 4) {
+		console.log("black win");
+	}
+};
+
+
+//Keep track of consecutive, adjacent checkers
+var red_count = 0;
+var black_count = 0;
+
+//Count 
+var checkWin = function(monster) {
+
+	for (var i=0; i < monster.length; i++) {
+		red_count = 0;
+		black_count = 0;
+
+		for (var x=0; x < monster[i].length; x++) {
+			if (monster[i][x] == "b") {
+				black_count++;
+				red_count = 0;
+			}
+			else if (monster[i][x] == "r") {
+				red_count++;
+				black_count = 0;
+			}
+			else {
+				red_count = 0;
+				black_count = 0;
+			};
+
+		winnerAlert();
+		};
+	};
 };
 
 updateMonster();
+
+checkWin(monster);
 
